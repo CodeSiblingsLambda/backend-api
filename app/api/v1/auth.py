@@ -1,17 +1,25 @@
-from fastapi import APIRouter, HTTPException, Depends
-from app.schemas.auth import LoginRequest, SignupClientRequest, SignupBusinessRequest
-from app.services.auth import login_user, signup_client, signup_business
+from fastapi import APIRouter, HTTPException, Depends, status
+from fastapi.responses import JSONResponse
+from app.schemas.auth import CustomerLogin, CustomerResponse, CustomerSignUp
+from app.services.auth import login_user, signup_client
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
-@router.post("/login")
-def login(data: LoginRequest):
+
+@router.post("/login", response_model=CustomerResponse, status_code=status.HTTP_200_OK)
+def login(data: CustomerLogin) -> CustomerResponse:
+    """
+    Authenticate a customer and return their profile (excluding password).
+    """
     return login_user(data)
 
-@router.post("/signup/client")
-def signup_client_endpoint(data: SignupClientRequest):
-    return signup_client(data)
 
-@router.post("/signup/business")
-def signup_business_endpoint(data: SignupBusinessRequest):
-    return signup_business(data)
+@router.post("/signup/client", status_code=status.HTTP_201_CREATED)
+def signup_client_endpoint(data: CustomerSignUp) -> JSONResponse:
+    """
+    Register a new customer. Returns success message if created.
+    """
+    signup_client(data)
+    return JSONResponse(
+        status_code=201, content={"message": "Customer created successfully"}
+    )
