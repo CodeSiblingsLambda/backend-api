@@ -37,3 +37,7 @@ run = "uv pip compile --output-file=requirements.prod.txt pyproject.toml"
 [tasks.req-dev]
 description = "Generate development requirements.txt (includes extras)"
 run = "uv pip compile --output-file=requirements.dev.txt pyproject.toml --all-extras"
+
+[tasks.format]
+description = "Apply formatting and code linting"
+run = "ruff format "
