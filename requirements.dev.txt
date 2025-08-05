@@ -18,6 +18,10 @@ click==8.2.1
     # via
     #   black
     #   uvicorn
+dnspython==2.7.0
+    # via email-validator
+email-validator==2.2.0
+    # via pydantic
 fastapi==0.116.1
     # via backend-api (pyproject.toml)
 h11==0.16.0
@@ -31,6 +35,7 @@ httpx==0.28.1
 idna==3.10
     # via
     #   anyio
+    #   email-validator
     #   httpx
 iniconfig==2.1.0
     # via pytest
@@ -47,7 +52,9 @@ platformdirs==4.3.8
 pluggy==1.6.0
     # via pytest
 pydantic==2.11.7
-    # via fastapi
+    # via
+    #   backend-api (pyproject.toml)
+    #   fastapi
 pydantic-core==2.33.2
     # via pydantic
 pygments==2.19.2
