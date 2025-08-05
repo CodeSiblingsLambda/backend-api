@@ -6,6 +6,8 @@ anyio==4.10.0
     # via
     #   httpx
     #   starlette
+asyncpg==0.30.0
+    # via backend-api (pyproject.toml)
 bcrypt==4.3.0
     # via backend-api (pyproject.toml)
 black==25.1.0
