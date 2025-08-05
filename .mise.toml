@@ -29,3 +29,11 @@ run = "docker compose -f docker/docker-compose.prod.yml logs -f"
 [tasks.logs-dev]
 description = "Follow logs for development containers"
 run = "docker compose -f docker/docker-compose.dev.yml logs -f"
+
+[tasks.req-prod]
+description = "Generate production requirements.txt"
+run = "uv pip compile --output-file=requirements.prod.txt pyproject.toml"
+
+[tasks.req-dev]
+description = "Generate development requirements.txt (includes extras)"
+run = "uv pip compile --output-file=requirements.dev.txt pyproject.toml --all-extras"
