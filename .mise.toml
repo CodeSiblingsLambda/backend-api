@@ -1,0 +1,31 @@
+[tasks.up-prod]
+description = "Start production containers"
+run = "docker compose -f docker/docker-compose.prod.yml up -d --force-recreate"
+
+[tasks.up-dev]
+description = "Start development containers"
+run = "docker compose -f docker/docker-compose.dev.yml up -d --force-recreate"
+
+[tasks.down-prod]
+description = "Stop and remove production containers"
+run = "docker compose -f docker/docker-compose.prod.yml down"
+
+[tasks.down-dev]
+description = "Stop and remove development containers"
+run = "docker compose -f docker/docker-compose.dev.yml down"
+
+[tasks.build-prod]
+description = "Build production images"
+run = "docker compose -f docker/docker-compose.prod.yml build --no-cache"
+
+[tasks.build-dev]
+description = "Build development images"
+run = "docker compose -f docker/docker-compose.dev.yml build --no-cache"
+
+[tasks.logs-prod]
+description = "Follow logs for production containers"
+run = "docker compose -f docker/docker-compose.prod.yml logs -f"
+
+[tasks.logs-dev]
+description = "Follow logs for development containers"
+run = "docker compose -f docker/docker-compose.dev.yml logs -f"
