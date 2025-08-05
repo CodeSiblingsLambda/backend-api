@@ -8,7 +8,7 @@ services:
     ports:
       - "8000:8000" # Expose FastAPI app
     env_file:
-      - ./env/.env # Adjust path to match directory structure
+      - ./.env
     environment:
       - UVICORN_ENV=PRODUCTION
       - LOG_LEVEL=INFO

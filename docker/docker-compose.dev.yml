@@ -11,7 +11,7 @@ services:
       - ../app:/usr/src/app # Mount the app folder directly to /app in the container
       - ../tests:/usr/src/tests
     env_file:
-      - ./env/.env
+      - ./.env
     environment:
       - UVICORN_ENV=DEVELOPMENT # Environment variable for development
       - LOG_LEVEL=DEBUG
